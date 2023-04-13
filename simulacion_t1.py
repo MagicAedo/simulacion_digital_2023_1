@@ -78,7 +78,7 @@ while True:
     vy = vy0 - g*t
     #se setea la posicion de la pelota
     pelota.setposition(x, y)
-    print(x, y,vx, 't = ', t, ' s')
+    print('x = ', x,' m', 'y = ', y,' m','Vx = ',' m/s', vx,'Vy = ',vy,' m/s' 't = ', tiempo_total, ' s')
 
     #si choca con el piso o paredes dan las siguientes condiciones
 
@@ -90,6 +90,18 @@ while True:
         vy0 = vy
         #y0 ahora su nueva posicion inicial es 5 (En realidad deberia ser 0 pero para fines de visualizacion se opto por 5)
         y0 = 5
+        x0 = x
+        #Es un nuevo sistema que ahora se va a estudiar, despues de la colisión el t debe ser 0
+        t= 0
+
+    if pelota.ycor() >= 245: 
+        #vy y vx ahora pierde energia por lo tanto tambien velocidad con dirección contraria
+        vy = -np.sqrt(c)*vy
+        vx = np.sqrt(c)*vx
+        vx0 = vx
+        vy0 = vy
+        #y0 ahora su nueva posicion inicial es 5 (En realidad deberia ser 0 pero para fines de visualizacion se opto por 5)
+        y0 = 245
         x0 = x
         #Es un nuevo sistema que ahora se va a estudiar, despues de la colisión el t debe ser 0
         t= 0
@@ -113,6 +125,7 @@ while True:
         t = 0 
     
     t = t+dt
+    tiempo_total += dt 
     ventana.update()
     #Descomentar la instrucción de abajo para ver la ejecucion en tiempo real
     #time.sleep(0.01)
