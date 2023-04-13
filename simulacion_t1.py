@@ -59,6 +59,8 @@ t = 0
 #razon en que crece el tiempo
 dt = 0.01
 
+tiempo_total = 0
+
 
 # altura inicial
 y0 = h
